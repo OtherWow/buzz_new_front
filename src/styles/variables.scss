@@ -1,0 +1,49 @@
+// 币安真实配色方案
+$primary-color: #f0b90b; // 币安金黄色
+$success-color: #0ecb81; // 币安绿色  
+$warning-color: #f0b90b;
+$danger-color: #f6465d; // 币安红色
+$info-color: #848e9c;
+
+// 文字颜色 - 币安暗色主题
+$text-primary: #eaecef; // 主要文字，更柔和的白色
+$text-regular: #b7bdc6; // 常规文字，中性灰
+$text-secondary: #848e9c; // 次要文字
+$text-placeholder: #5e6673; // 占位文字
+
+// 边框颜色 - 币安风格
+$border-base: #2b3139; // 基础边框
+$border-light: #383a3e; // 轻边框
+$border-lighter: #474d57; // 更轻边框
+$border-extra-light: #5e6673; // 极轻边框
+
+// 背景颜色 - 币安暗色主题
+$bg-color: #1e2329; // 主背景，接近币安网站
+$bg-color-page: #0b0e11; // 页面背景，更深
+$bg-color-overlay: #2b3139; // 覆盖层背景
+
+// 间距
+$spacing-xs: 4px;
+$spacing-sm: 8px;
+$spacing-md: 16px;
+$spacing-lg: 24px;
+$spacing-xl: 32px;
+
+// 圆角
+$border-radius-base: 4px;
+$border-radius-small: 2px;
+$border-radius-round: 20px;
+$border-radius-circle: 50%;
+
+// 阴影
+$box-shadow-base: 0 2px 4px rgba(0, 0, 0, 0.12), 0 0 6px rgba(0, 0, 0, 0.04);
+$box-shadow-dark: 0 2px 4px rgba(0, 0, 0, 0.12), 0 0 6px rgba(0, 0, 0, 0.12);
+$box-shadow-light: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+
+// 字体大小
+$font-size-extra-small: 12px;
+$font-size-small: 13px;
+$font-size-medium: 14px;
+$font-size-base: 14px;
+$font-size-large: 16px;
+$font-size-extra-large: 18px; 

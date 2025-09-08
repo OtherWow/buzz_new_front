@@ -1,0 +1,218 @@
+// 全局样式文件
+@use './variables.scss' as *;
+
+// 全局样式重置
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  font-family: 'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', '微软雅黑', Arial, sans-serif;
+}
+
+// Element Plus 样式覆盖 - 币安暗色主题
+.el-menu {
+  border-right: none !important;
+}
+
+// 卡片组件暗色主题
+.el-card {
+  background-color: #1e2329 !important;
+  border: 1px solid #2b3139 !important;
+  color: #eaecef !important;
+  
+  .el-card__header {
+    background-color: #1e2329 !important;
+    border-bottom: 1px solid #2b3139 !important;
+    color: #eaecef !important;
+  }
+  
+  .el-card__body {
+    background-color: #1e2329 !important;
+    color: #eaecef !important;
+  }
+}
+
+// 下拉菜单暗色主题
+.el-dropdown-menu {
+  background: #1e2329 !important;
+  border: 1px solid #2b3139 !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4) !important;
+  
+  .el-dropdown-menu__item {
+    color: #b7bdc6 !important;
+    
+    &:hover {
+      background: rgba(240, 185, 11, 0.1) !important;
+      color: #f0b90b !important;
+    }
+    
+    .el-icon {
+      color: inherit !important;
+    }
+  }
+}
+
+// 表格暗色主题 - 币安风格
+.el-table {
+  background-color: #0b0e11 !important;
+  color: #eaecef !important;
+  border: 1px solid #2b3139 !important;
+  border-radius: 8px !important;
+  overflow: hidden !important;
+  
+  // 表头样式
+  .el-table__header-wrapper {
+    .el-table__header {
+      background-color: #1e2329 !important;
+      
+      th {
+        background-color: #1e2329 !important;
+        color: #f0b90b !important;
+        border-bottom: 1px solid #2b3139 !important;
+        font-weight: 600 !important;
+        font-size: 14px !important;
+        padding: 16px 12px !important;
+        
+        .cell {
+          color: #f0b90b !important;
+        }
+      }
+    }
+  }
+  
+  // 表体样式
+  .el-table__body-wrapper {
+    .el-table__body {
+      tr {
+        background-color: #0b0e11 !important;
+        transition: all 0.2s ease !important;
+        
+        &:nth-child(even) {
+          background-color: #181a20 !important;
+        }
+        
+        &:hover {
+          background-color: rgba(240, 185, 11, 0.08) !important;
+          transform: scale(1.002) !important;
+        }
+        
+        td {
+          border-bottom: 1px solid #2b3139 !important;
+          color: #eaecef !important;
+          padding: 16px 12px !important;
+          font-size: 14px !important;
+          
+          .cell {
+            color: #eaecef !important;
+          }
+        }
+      }
+    }
+  }
+  
+  // 空数据状态
+  .el-table__empty-block {
+    background-color: #0b0e11 !important;
+    
+    .el-table__empty-text {
+      color: #848e9c !important;
+    }
+  }
+  
+  // 删除斑马纹，使用自定义交替行
+  &.el-table--striped {
+    .el-table__body {
+      tr.el-table__row--striped {
+        td {
+          background-color: #181a20 !important;
+        }
+      }
+    }
+  }
+}
+
+// 标签组件币安风格
+.el-tag {
+  border: none !important;
+  font-weight: 600 !important;
+  border-radius: 6px !important;
+  padding: 4px 12px !important;
+  font-size: 12px !important;
+  
+  &.el-tag--success {
+    background: linear-gradient(135deg, #0ecb81 0%, #2dd4aa 100%) !important;
+    color: #0b0e11 !important;
+  }
+  
+  &.el-tag--warning {
+    background: linear-gradient(135deg, #f0b90b 0%, #fcd535 100%) !important;
+    color: #0b0e11 !important;
+  }
+  
+  &.el-tag--danger {
+    background: linear-gradient(135deg, #f6465d 0%, #ff6b82 100%) !important;
+    color: #ffffff !important;
+  }
+  
+  &.el-tag--info {
+    background: linear-gradient(135deg, #848e9c 0%, #b7bdc6 100%) !important;
+    color: #0b0e11 !important;
+  }
+}
+
+// 通用工具类
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mt-16 {
+  margin-top: 16px;
+}
+
+.mb-16 {
+  margin-bottom: 16px;
+}
+
+.ml-16 {
+  margin-left: 16px;
+}
+
+.mr-16 {
+  margin-right: 16px;
+}
+
+.p-16 {
+  padding: 16px;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+} 
