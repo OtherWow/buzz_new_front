@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//d/**)",
+      "Bash(cat:*)",
+      "mcp__mysql-mcp__list_tables",
+      "mcp__mysql-mcp__connect_db",
+      "mcp__mysql-mcp__describe_table",
+      "mcp__mysql-mcp__query",
+      "mcp__mysql-mcp__execute"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
