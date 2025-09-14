@@ -1,15 +1,13 @@
 {
   "permissions": {
     "allow": [
-      "Read(//d/**)",
-      "Bash(cat:*)",
-      "mcp__mysql-mcp__list_tables",
-      "mcp__mysql-mcp__connect_db",
-      "mcp__mysql-mcp__describe_table",
-      "mcp__mysql-mcp__query",
-      "mcp__mysql-mcp__execute"
+      "Bash(echo $SHELL)",
+      "Bash(source ~/.bashrc)",
+      "Bash(alias claude)",
+      "Read(//c/Users/syb/**)"
     ],
     "deny": [],
     "ask": []
-  }
+  },
+  "enableAllProjectMcpServers": true
 }

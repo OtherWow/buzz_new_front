@@ -5,7 +5,7 @@ import type { ApiResponse } from '@/types'
 
 // 创建axios实例
 const request: AxiosInstance = axios.create({
-  baseURL: '/api',
+  baseURL: import.meta.env.VITE_API_BASE_URL || 'http://localhost:7878',
   timeout: 10000,
   headers: {
     'Content-Type': 'application/json',
@@ -34,17 +34,30 @@ request.interceptors.request.use(
 
 // 响应拦截器
 request.interceptors.response.use(
-  (response: AxiosResponse<ApiResponse>) => {
-    const { code, message, data } = response.data
-    
-    // 成功响应
-    if (code === 0 || code === 200) {
+  (response: AxiosResponse<any>) => {
+    // 如果是 /token 接口，直接返回原始响应
+    if (response.config.url?.includes('/token')) {
       return response
     }
-    
-    // 业务错误
-    ElMessage.error(message || '请求失败')
-    return Promise.reject(new Error(message || '请求失败'))
+
+    const responseData = response.data
+
+    // 检查是否为标准API响应格式
+    if (responseData && typeof responseData === 'object' && 'code' in responseData) {
+      const { code, message, data } = responseData
+
+      // 成功响应
+      if (code === 0 || code === 200) {
+        return response
+      }
+
+      // 业务错误
+      ElMessage.error(message || '请求失败')
+      return Promise.reject(new Error(message || '请求失败'))
+    }
+
+    // 非标准格式，直接返回
+    return response
   },
   (error) => {
     const authStore = useAuthStore()

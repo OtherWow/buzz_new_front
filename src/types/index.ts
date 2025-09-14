@@ -1,39 +1,51 @@
-// 用户相关类型
+// 用户相关类型 (兼容 RBAC API)
 export interface User {
   id: number
   username: string
-  email: string
+  email?: string
   phone?: string
-  real_name?: string
   avatar?: string
-  is_active: boolean
-  role_id: number
-  role?: Role
-  available_roles?: Role[] // 用户可切换的角色列表
+  status: number
+  // RBAC 字段
+  roles: Role[]
+  permissions: Permission[]
+  currentRole?: Role
+  // 时间字段
   created_at: string
   updated_at: string
 }
 
-// 角色相关类型
+// 角色相关类型 (兼容 RBAC API)
 export interface Role {
   id: number
-  name: string
-  description?: string
-  permissions: Permission[]
-  created_at: string
-  updated_at: string
+  role_name: string  // RBAC API 使用 role_name
+  name?: string      // 兼容旧版本
+  desc?: string      // RBAC API 使用 desc
+  description?: string // 兼容旧版本
+  status: number     // RBAC API 状态字段
+  permissions?: Permission[]
+  created?: string   // RBAC API 使用 created
+  modified?: string  // RBAC API 使用 modified
+  created_at?: string
+  updated_at?: string
 }
 
-// 权限相关类型
+// 权限相关类型 (兼容 RBAC API)
 export interface Permission {
   id: number
   name: string
-  code: string
+  code?: string      // 兼容旧版本
+  identifier?: string // RBAC API 使用 identifier
   description?: string
-  resource: string
-  action: string
-  created_at: string
-  updated_at: string
+  type: number       // RBAC API 类型：1菜单/2按钮/3接口
+  icon?: string
+  path?: string
+  component?: string
+  pid: number        // 父菜单ID
+  api?: string       // 接口地址
+  method?: string    // HTTP方法
+  created_at?: string
+  updated_at?: string
 }
 
 // 菜单相关类型
@@ -91,7 +103,7 @@ export interface LoginForm {
 
 export interface LoginResponse {
   access_token: string
-  token_type: string
+  token_type?: string
   user: User
 }
 

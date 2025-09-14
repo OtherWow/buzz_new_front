@@ -129,6 +129,18 @@ const routes: Array<RouteRecordRaw> = [
           permission: 'system:manage',
           icon: 'Setting'
         }
+      },
+      // API测试页面
+      {
+        path: '/test-api',
+        name: 'TestAPI',
+        component: () => import('@/views/test-api.vue'),
+        meta: {
+          title: 'API测试',
+          requiresAuth: true,
+          icon: 'Connection',
+          hidden: true // 隐藏在菜单中
+        }
       }
     ]
   },
@@ -164,9 +176,12 @@ const router = createRouter({
 // 路由守卫
 router.beforeEach(async (to, from, next) => {
   NProgress.start()
-  
+
   const authStore = useAuthStore()
-  
+
+  // 确保认证状态已初始化
+  await authStore.initAuth()
+
   // 如果需要认证但未登录，跳转到登录页
   if (to.meta.requiresAuth && !authStore.isLoggedIn) {
     next('/login')

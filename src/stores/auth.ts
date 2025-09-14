@@ -12,12 +12,18 @@ export const useAuthStore = defineStore('auth', () => {
 
   // 用户权限
   const userPermissions = computed(() => {
-    if (!user.value?.role?.permissions) return []
-    return user.value.role.permissions.map(p => p.code)
+    if (!user.value?.permissions) return []
+    return user.value.permissions.map(p => p.identifier || p.name || '')
   })
 
   // 用户角色
-  const userRole = computed(() => user.value?.role?.name || '')
+  const userRole = computed(() => user.value?.currentRole?.role_name || '')
+
+  // 用户所有角色
+  const userRoles = computed(() => {
+    if (!user.value?.roles) return []
+    return user.value.roles.map(r => r.role_name || '')
+  })
 
   // 登录
   const login = async (loginForm: LoginForm): Promise<boolean> => {
@@ -84,10 +90,10 @@ export const useAuthStore = defineStore('auth', () => {
     try {
       const response = await authApi.switchRole(roleId)
       const updatedUser = response.data
-      
+
       user.value = updatedUser
       localStorage.setItem('user', JSON.stringify(updatedUser))
-      
+
       ElMessage.success('角色切换成功')
       return true
     } catch (error: any) {
@@ -113,6 +119,7 @@ export const useAuthStore = defineStore('auth', () => {
     isLoggedIn,
     userPermissions,
     userRole,
+    userRoles,
     login,
     logout,
     hasPermission,
